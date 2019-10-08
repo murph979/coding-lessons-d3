@@ -1,0 +1,25 @@
+{
+  "name": "coding-lessons-d3",
+  "version": "1.0.0",
+  "description": "D3 Class Exercises.",
+  "type": "git",
+  "url": "https://github.com/jrue/coding-lessons-d3",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Rue",
+  "license": "MIT",
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "gh-pages": "^2.1.1",
+    "grunt": "^1.0.4",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-connect": "^2.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-dart-sass": "^1.1.3",
+    "grunt-google-fonts": "^0.5.0"
+  }
+}
