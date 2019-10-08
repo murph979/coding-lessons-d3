@@ -1,4 +1,4 @@
-Coding Lesson SVG
+Coding Lesson D3
 ============
 
 This is a web template used for in-class exercises on functions and conditionals.
