@@ -10,12 +10,75 @@
   </head>
   <body>
 
-    <div id="mychart" class="container"></div>
+   
 
     <script type="text/javascript" src="js/d3-5.9.7.min.js"></script>
     <script>
 
+var data = [
+    { name:"Apples",   value: 124  },
+    { name:"Pears" ,   value: 244 },
+    { name:"Oranges",  value: 256 },
+    { name:"Bananas",  value: 366 },
+    { name:"Cherries", value: 366}
+];
 
+var margin = {top:0, right:0, bottom:75, left:20},
+    width  = 900 - margin.left - margin.right,
+    height = 800 - margin.top  - margin.bottom;
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom);
+
+var chart = svg.append("g")
+    .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+
+var values = data.map(function(d){ return d.value; });
+var names  = data.map(function(d){ return d.name; });
+
+var y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, d3.max(values)]);
+
+var x = d3.scaleBand()
+    .range([0, width])
+    .domain(names)
+    .padding(0.1);
+
+chart.selectAll(".bars")
+     .data(data)
+     .enter()
+     .append("rect")
+     .attr("x", function(d){ return x(d.name); })
+     .attr("y", function(d){ return y(d.value); })
+     .attr("width", function(d){ return x.bandwidth(); }) //bandwidth() returns width of bars
+     .attr("height", function(d){ return height - y(d.value); })
+     .attr("class", "bar");
+
+svg.append("g")
+   .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+   .call(d3.axisLeft(y));
+
+svg.append("g")
+   .attr("transform", "translate(" + margin.left + "," + (height + margin.top) + ")")
+   .call(d3.axisBottom(x));
+
+   
+
+
+      // svg.append("circle")
+      //   .attr("cx", 250)
+      //   .attr("cy", 250)
+      //   .attr("r", 50)
+      //   .attr("fill", "darkgreen");
+
+      // svg.append("circle")
+      //   .attr("cx", 300)
+      //   .attr("cy", 300)
+      //   .attr("r", 50)
+      //   .attr("fill", "hotpink");
 
     </script>
   </body>
